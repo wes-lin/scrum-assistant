@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "GitLab 禅道助手",
+  "name": "Scrum Assistant",
   "version": "1.0.0",
   "description": "在 GitLab 中把禅道任务/缺陷编号转换为链接，并为禅道创建分支页增加可配置的分支类型。",
   "icons": {
@@ -12,7 +12,7 @@
     "storage"
   ],
   "action": {
-    "default_title": "GitLab 禅道助手",
+    "default_title": "Scrum Assistant",
     "default_popup": "popup.html",
     "default_icon": {
       "16": "icons/icon16.png",
