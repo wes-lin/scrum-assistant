@@ -1,0 +1,106 @@
+:root {
+  color-scheme: light;
+  --ink: #172033;
+  --muted: #657089;
+  --line: #dfe5ef;
+  --paper: #f5f7fb;
+  --card: #ffffff;
+  --accent: #3859d6;
+  --accent-dark: #2a43aa;
+  --soft-accent: #eef1ff;
+  --danger: #b43f51;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 15% 0%, #e9edff 0, transparent 34rem),
+    var(--paper);
+}
+
+.page-shell {
+  width: min(980px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: 58px 0 42px;
+}
+
+.page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.eyebrow, .section-kicker {
+  margin: 0 0 8px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 10px; font-size: clamp(30px, 5vw, 46px); letter-spacing: -.04em; }
+h2 { margin-bottom: 0; font-size: 21px; }
+.subtitle { max-width: 620px; margin-bottom: 0; color: var(--muted); line-height: 1.7; }
+.status-dot { width: 12px; height: 12px; margin-top: 10px; border-radius: 50%; background: #6bc79d; box-shadow: 0 0 0 6px #dff5e9; }
+
+.card {
+  margin-bottom: 18px;
+  padding: 26px;
+  border: 1px solid rgba(223, 229, 239, .9);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 8px 30px rgba(37, 50, 90, .05);
+}
+
+.section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 22px; }
+.section-tip { max-width: 450px; margin-bottom: 1px; color: var(--muted); font-size: 13px; line-height: 1.6; text-align: right; }
+.field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.field { display: flex; min-width: 0; flex-direction: column; gap: 8px; }
+.field > span { font-size: 14px; font-weight: 700; }
+input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--ink);
+  background: #fbfcfe;
+  font: inherit;
+  outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--soft-accent); }
+small { color: var(--muted); font-size: 12px; line-height: 1.55; }
+code { padding: 2px 5px; border-radius: 5px; color: #3946a2; background: var(--soft-accent); font-family: Consolas, monospace; }
+
+.branch-types { display: grid; gap: 10px; margin-bottom: 14px; }
+.branch-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) auto; gap: 10px; align-items: center; }
+.branch-row input { min-height: 40px; }
+.branch-row button { width: 40px; height: 40px; border: 0; border-radius: 9px; color: var(--danger); background: #fff0f2; cursor: pointer; font-size: 18px; }
+.branch-row button:hover { background: #ffe1e6; }
+
+.button { min-height: 42px; padding: 0 17px; border: 0; border-radius: 10px; font: inherit; font-size: 14px; font-weight: 700; cursor: pointer; transition: transform .15s, background .15s, box-shadow .15s; }
+.button:hover { transform: translateY(-1px); }
+.button-primary { color: white; background: var(--accent); box-shadow: 0 6px 16px rgba(56, 89, 214, .2); }
+.button-primary:hover { background: var(--accent-dark); }
+.button-secondary { color: var(--accent); background: var(--soft-accent); }
+.button-quiet { color: var(--muted); background: transparent; }
+.form-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 26px; }
+.form-actions > :last-child { margin-left: auto; }
+.save-status { min-height: 22px; margin: 13px 4px 0; color: #27835b; font-size: 13px; }
+.save-status.error { color: var(--danger); }
+footer { margin-top: 22px; color: var(--muted); font-size: 12px; text-align: center; }
+
+@media (max-width: 700px) {
+  .page-shell { width: min(100% - 24px, 560px); padding-top: 30px; }
+  .page-header, .section-heading { display: block; }
+  .section-tip { margin-top: 12px; text-align: left; }
+  .field-grid { grid-template-columns: 1fr; }
+  .branch-row { grid-template-columns: 1fr 1fr auto; }
+}

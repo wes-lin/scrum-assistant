@@ -1,0 +1,12 @@
+:root { font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; color: #172033; }
+body { min-width: 280px; margin: 0; background: #f7f8fc; }
+.popup { padding: 22px 22px 19px; }
+.brand-mark { display: grid; width: 36px; height: 36px; place-items: center; overflow: hidden; border-radius: 11px; background: #3859d6; }
+.brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+h1 { margin: 15px 0 7px; font-size: 19px; }
+.intro, .hint { margin: 0; color: #657089; font-size: 12px; line-height: 1.6; }
+.configuration-status { margin: 18px 0 15px; padding: 11px 12px; border-radius: 9px; color: #3f4d67; background: #edf1ff; font-size: 12px; line-height: 1.5; }
+.configuration-status.ready { color: #287454; background: #e6f6ed; }
+button { width: 100%; min-height: 38px; border: 0; border-radius: 9px; color: #fff; background: #3859d6; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+button:hover { background: #2a43aa; }
+.hint { margin-top: 12px; }

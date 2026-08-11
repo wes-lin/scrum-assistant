@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "GitLab 禅道助手",
+  "version": "1.0.0",
+  "description": "在 GitLab 中把禅道任务/缺陷编号转换为链接，并为禅道创建分支页增加可配置的分支类型。",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "storage"
+  ],
+  "action": {
+    "default_title": "GitLab 禅道助手",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ]
+}

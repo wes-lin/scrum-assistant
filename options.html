@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/png" sizes="128x128" href="icons/icon128.png">
+  <title>Scrum Assistant 设置</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <div>
+        <p class="eyebrow">BROWSER EXTENSION</p>
+        <h1>Scrum Assistant</h1>
+        <p class="subtitle">把 GitLab 中的任务引用连到禅道，并在禅道分支创建页注入自定义分支类型。</p>
+      </div>
+      <div class="status-dot" aria-label="本地配置"></div>
+    </header>
+
+    <form id="settings-form" novalidate>
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">01 / 地址</p>
+            <h2>内网系统地址</h2>
+          </div>
+          <p class="section-tip">填写 origin，也可以包含部署在子目录下的路径。</p>
+        </div>
+        <div class="field-grid">
+          <label class="field">
+            <span>GitLab 地址</span>
+            <input id="gitlabBaseUrl" type="url" placeholder="https://gitlab.example.local" autocomplete="url">
+            <small>插件只会在此地址及其子路径处理页面。</small>
+          </label>
+          <label class="field">
+            <span>禅道地址</span>
+            <input id="zentaoBaseUrl" type="url" placeholder="https://zentao.example.local" autocomplete="url">
+            <small>生成的任务、缺陷链接会指向此地址。</small>
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">02 / 规则</p>
+            <h2>任务与 Bug 引用</h2>
+          </div>
+          <p class="section-tip">正则表达式的第一个捕获组必须是 ID，例如 <code>TASK-(\d+)</code>。</p>
+        </div>
+        <div class="field-grid">
+          <label class="field">
+            <span>任务 ID 规则</span>
+            <input id="taskPattern" type="text" spellcheck="false">
+            <small>匹配到的完整文字会变成任务链接，默认支持“任务 123”和“task#123”。</small>
+          </label>
+          <label class="field">
+            <span>Bug ID 规则</span>
+            <input id="bugPattern" type="text" spellcheck="false">
+            <small>默认支持“缺陷 123”和“bug#123”。规则使用 JavaScript 正则语法。</small>
+          </label>
+          <label class="field">
+            <span>任务链接路径模板</span>
+            <input id="taskUrlTemplate" type="text" spellcheck="false">
+            <small>使用 <code>{id}</code> 代表任务 ID；默认适用于禅道标准地址。</small>
+          </label>
+          <label class="field">
+            <span>Bug 链接路径模板</span>
+            <input id="bugUrlTemplate" type="text" spellcheck="false">
+            <small>使用 <code>{id}</code> 代表 Bug ID，也可以填写完整 URL。</small>
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">03 / 禅道</p>
+            <h2>创建分支时的分支类型</h2>
+          </div>
+          <p class="section-tip">在“创建/新建分支”页面中，插件会在分支名称旁增加类型选择</p>
+        </div>
+        <div id="branch-types" class="branch-types"></div>
+        <button id="add-branch-type" class="button button-secondary" type="button">＋ 添加分支类型</button>
+      </section>
+
+      <div class="form-actions">
+        <button id="reset-settings" class="button button-quiet" type="button">恢复默认设置</button>
+        <button class="button button-primary" type="submit">保存设置</button>
+      </div>
+      <p id="save-status" class="save-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <footer>设置保存在当前浏览器的本地存储中，不会上传到外部服务。</footer>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>
